@@ -17,9 +17,7 @@ export class IndicatorsComponent {
   indicators = [];
   displayedColumns: string[] = ['name', 'source', 'sourceNote'];
   dataSource = new MatTableDataSource<any>(this.indicators);
-  indicatorUrl = 'https://api.worldbank.org/v2/indicator';
-  topicUrl = 'https://api.worldbank.org/v2/topic';
-  indicatorByTopicUrl = "http://api.worldbank.org/v2/indicator?topic=";
+  baseUrl = 'https://api.worldbank.org/v2/';
   currentPage = 0;
   pageSize = 0;
   itemCount = 0;
@@ -29,7 +27,7 @@ export class IndicatorsComponent {
   fontSize = "1.2em";
 
   onPaginateChange(event?:PageEvent) {
-    let url = `${this.indicatorUrl}?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
+    let url = `${this.baseUrl}indicator?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
         this.itemCount = result[0].total;
@@ -50,12 +48,11 @@ export class IndicatorsComponent {
   }
   
   onTopicChange(element: any) {
-    let url = `${this.indicatorByTopicUrl}${element.value}&format=json`;
+    let url = `${this.baseUrl}indicator?topic=${element.value}&format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
         this.topicFilter = element.value;
         this.itemCount = result[0].total;
-        console.log(this.itemCount = result[0].total);
         this.currentPage = result[0].page - 1;
         this.indicators = result[1];
         this.dataSource = new MatTableDataSource<any>(result[1]);
@@ -64,7 +61,7 @@ export class IndicatorsComponent {
   }
 
   getAllTopics() {
-    let url = `${this.topicUrl}?format=json`;
+    let url = `${this.baseUrl}topic?format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
         this.topics = result[1];

@@ -18,7 +18,7 @@ export class CountriesComponent {
   countries = [];
   displayedColumns: string[] = ['name', 'iso2Code', 'location'];
   dataSource = new MatTableDataSource<any>(this.countries);
-  countriesUrl = 'https://api.worldbank.org/v2/country';
+  baseUrl = 'https://api.worldbank.org/v2/country';
   currentPage = 0;
   pageSize = 0;
   itemCount = 0;
@@ -26,7 +26,7 @@ export class CountriesComponent {
   fontSize = "1.2em";
 
   onPaginateChange(event?:PageEvent) {
-    let url = `${this.countriesUrl}?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
+    let url = `${this.baseUrl}?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
         this.itemCount = result[0].total;
