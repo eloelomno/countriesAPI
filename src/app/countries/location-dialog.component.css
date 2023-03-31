@@ -1,0 +1,9 @@
+.map {
+    height: 100%;
+    padding: 0;
+}
+
+.map-osm {
+    width: 700px;
+    height: 350px;
+}

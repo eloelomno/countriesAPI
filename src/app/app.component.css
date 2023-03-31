@@ -1,0 +1,38 @@
+mat-toolbar a {
+    color: white;
+    text-decoration: none;
+}
+
+mat-toolbar span {
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.body-component {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-primary {
+    background-color:black;
+}
+ 
+.active {
+    text-decoration: underline;
+    text-decoration-color:#007eff;
+    text-underline-offset: 10px;
+    font-weight: bold;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar-app-name, .toolbar-icon {
+    color: #007eff;
+}
+
+.toolbar-icon {
+    margin-right: 15px;
+}

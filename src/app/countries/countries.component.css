@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+.countries-table {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid #d4d7d5;
+}
+
+.component-header {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #d4d7d5;    
+    font-size: 1.2em;
+    font-weight: bold;
+}
