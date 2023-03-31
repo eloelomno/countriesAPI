@@ -13,7 +13,6 @@ import * as Leaflet from 'leaflet';
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient) {}
   
     countryName = this.data.element.name;
-    url = `http://api.worldbank.org/v2/country/${this.data.element.iso2Code}?format=json`;
     lat = this.data.element.latitude;
     lng = this.data.element.longitude;
     options = {
@@ -22,17 +21,7 @@ import * as Leaflet from 'leaflet';
       center: new Leaflet.LatLng(this.lat, this.lng)
     };
     
-    getLocationInfo() {
-      this.http.get<any>(this.url).subscribe(
-        (result) => {
-          this.lat = result[1][0].latitude;
-          this.lng = result[1][0].longitude;
-        }
-      );
-    }
-    
     ngOnInit() {
-      this.getLocationInfo();
     }
 }
 
