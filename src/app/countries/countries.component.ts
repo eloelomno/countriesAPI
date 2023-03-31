@@ -3,7 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { MapLocationDialog } from './location-dialog.component';
+import { MapLocationDialog } from './location-dialog/location-dialog.component';
 
 @Component({
   selector: 'app-countries',
