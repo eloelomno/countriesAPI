@@ -3,7 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { IndicatorTopicDetailsDialog } from './indicator-topic-details-dialog.component';
+import { IndicatorTopicDetailsDialog } from './indicators-topic-details-dialog/indicator-topic-details-dialog.component';
 
 @Component({
   selector: 'app-indicators',
@@ -30,7 +30,13 @@ export class IndicatorsComponent {
   fontSize = "1.2em";
 
   onPaginateChange(event?:PageEvent) {
-    let url = `${this.baseUrl}indicator?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
+    let url = '';
+    if (this.topicFilter) {
+      url = `${this.baseUrl}topic/${this.topicFilter}/indicator?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
+    } else {
+      url = `${this.baseUrl}indicator?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
+    }
+    
     this.http.get<any>(url).subscribe(
       (result) => {
         this.itemCount = result[0].total;
