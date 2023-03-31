@@ -48,7 +48,7 @@ export class IndicatorsComponent {
   }
   
   onTopicChange(element: any) {
-    let url = `${this.baseUrl}indicator?topic=${element.value}&format=json`;
+    let url = `${this.baseUrl}topic/${element.value}/indicator?format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
         this.topicFilter = element.value;
