@@ -1,8 +1,12 @@
 <mat-toolbar color = "primary">
   <span class="toolbar-app-name">Countries API</span>
   <mat-icon class="toolbar-icon">outlined_flag</mat-icon>
-  <span [ngClass]="{'active': currentTab === 'countries'}" (click)="setTab('countries')"><a routerLink="/countries" routerLinkActive="active" ariaCurrentWhenActive="page">Countries</a></span>
-  <span [ngClass]="{'active': currentTab === 'indicators'}" (click)="setTab('indicators')"><a routerLink="/indicators" routerLinkActive="active" ariaCurrentWhenActive="page">Indicators</a></span>
+  <span class="tooblar-page" [ngClass]="{'active': currentTab === 'countries'}" (click)="setTab('countries')" routerLink="/countries" routerLinkActive="active" ariaCurrentWhenActive="page">
+    Countries
+  </span>
+  <span class="tooblar-page" [ngClass]="{'active': currentTab === 'indicators'}" (click)="setTab('indicators')" routerLink="/indicators" routerLinkActive="active" ariaCurrentWhenActive="page">
+    Indicators
+  </span>
 </mat-toolbar>
 
 <div class="body-component">

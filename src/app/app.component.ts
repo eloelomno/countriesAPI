@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bank-system';
-  currentTab = window.location.pathname.includes('countries') ? 'countries' : 'indicators';
+  currentTab = window.location.pathname === '/' ? 'countries' : (window.location.pathname.includes('countries') ? 'countries' : 'indicators');
 
   setTab(name: string) {
     this.currentTab = name;

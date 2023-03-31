@@ -36,3 +36,7 @@ mat-toolbar span {
 .toolbar-icon {
     margin-right: 15px;
 }
+
+.tooblar-page { 
+    cursor: pointer;
+}
