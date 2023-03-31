@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { IndicatorTopicDetailsDialog } from './indicator-topic-details-dialog.component';
 
 @Component({
   selector: 'app-indicators',
@@ -75,32 +76,4 @@ export class IndicatorsComponent {
     this.getAllTopics();
   }
 
-}
-
-@Component({
-  selector: 'indicator-topic-details-dialog',
-  templateUrl: 'indicator-topic-details-dialog.html',
-  styleUrls: ['indicator-topic-details-dialog.component.css']
-})
-export class IndicatorTopicDetailsDialog implements OnInit {
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient) {}
-
-  topicName = '';
-  url = `http://api.worldbank.org/v2/topic/${this.data.element}?format=json`;
-  topics: any = [];
-  topicDetails = '';
-  
-  getTopicDetails() {
-    this.http.get<any>(this.url).subscribe(
-      (result) => {
-        this.topics = result[1];
-        this.topicName = result[1][0].value;
-      }
-    );
-  }
-  
-  ngOnInit() {
-    this.getTopicDetails();
-  }
 }
