@@ -24,6 +24,8 @@ export class IndicatorsComponent {
   itemCount = 0;
   topics: any = [];
   topicFilter = '';
+  topicName = '';
+  topicSourceNote = '';
   color = '#007eff29';
   fontSize = "1.2em";
 
@@ -43,16 +45,20 @@ export class IndicatorsComponent {
   onTopicDetailsClicked() {
     this.dialog.open(IndicatorTopicDetailsDialog, {
       data: {
-        element: this.topicFilter
+        filter: this.topicFilter,
+        sourceName: this.topicName,
+        sourceNote: this.topicSourceNote
       },
     });
   }
   
   onTopicChange(element: any) {
-    let url = `${this.baseUrl}topic/${element.value}/indicator?format=json`;
+    let url = `${this.baseUrl}topic/${element.value.id}/indicator?format=json`;
     this.http.get<any>(url).subscribe(
       (result) => {
-        this.topicFilter = element.value;
+        this.topicFilter = element.value.id;
+        this.topicName = element.value.value;
+        this.topicSourceNote = element.value.sourceNote;
         this.itemCount = result[0].total;
         this.currentPage = result[0].page - 1;
         this.indicators = result[1];
