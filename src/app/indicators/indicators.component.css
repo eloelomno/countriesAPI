@@ -17,7 +17,7 @@ table {
     font-weight: bold;
 }
 
-.component-select, .component-filter, .component-table {
+.component-select, .component-filter {
     margin-top: 15px;
 }
 
@@ -27,4 +27,20 @@ table {
 
 th.mat-sort-header-sorted {
     color: black;
+}
+
+.mat-mdc-row:nth-child(even){
+    background-color: #edf0f3;
+}
+        
+.mat-mdc-row:nth-child(odd){
+    background-color: #ffffff;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: #007eff;
+}
+
+.mat-primary .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+    color: #007eff;
 }

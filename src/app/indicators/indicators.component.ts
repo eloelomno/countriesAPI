@@ -25,6 +25,8 @@ export class IndicatorsComponent {
   itemCount = 0;
   topics: any = [];
   topicFilter = '';
+  color = '#007eff29';
+  fontSize = "1.2em";
 
   onPaginateChange(event?:PageEvent) {
     let url = `${this.indicatorUrl}?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
