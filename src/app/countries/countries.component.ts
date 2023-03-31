@@ -22,6 +22,8 @@ export class CountriesComponent {
   currentPage = 0;
   pageSize = 0;
   itemCount = 0;
+  color = '#007eff29';
+  fontSize = "1.2em";
 
   onPaginateChange(event?:PageEvent) {
     let url = `${this.countriesUrl}?page=${event ? event.pageIndex + 1 : this.currentPage+1}&format=json`;
